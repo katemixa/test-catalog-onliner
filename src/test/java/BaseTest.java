@@ -5,22 +5,20 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Settings {
+public class BaseTest {
     private final static String URL_CONNECTION = "https://www.onliner.by/";
-    TVPageObject page;
-    private WebDriver driver;
+    public static WebDriver driver;
 
     @Before
-    public void openConnection() {
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(URL_CONNECTION);
-        page = new TVPageObject(driver);
     }
 
     @After
-    public void closeConnection() {
+    public void tearDown() {
         driver.quit();
     }
 }
